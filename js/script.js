@@ -21,6 +21,21 @@ const taskContainer = document.querySelector('[data-tasks]');
 
 const taksTemplate = document.getElementById('task-template');
 
+const newTaskForm = document.querySelector('[data-new-task-form]');
+const newTaskInput = document.querySelector('[data-new-task-input]');
+
+
+
+taskContainer.addEventListener('click', e=>{
+  if(e.target.tagName.toLowerCase()=== 'input'){
+    const selectedList = lists.find(list => list.id === selectedListId);
+    const selectedTask = selectedList.tasks.find(task=> task.id === e.target.id);
+    selectedTask.complete = e.target.checked;
+    save();
+    renderTaskCount(selectedList);
+  }
+})
+
 
 deleteListButton.addEventListener('click', e => {
   //creamos una nueva lista filtrando la lista que está seleccionada actualmente
@@ -40,15 +55,30 @@ newListForm.addEventListener('submit', e => {
   saveAndRender(); 
 })
 
+newTaskForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const taskName = newTaskInput.value;
+  if(taskName == null || taskName.trim().length == 0) return;
+  const task = createTask(taskName);
+  newTaskInput.value = null;
+  const selectedList = lists.find(list=> list.id === selectedListId);
+  selectedList.tasks.push(task);
+  saveAndRender(); 
+})
+
+function createTask(name){
+  return {
+    id: Date.now().toString(),
+    name: name,
+    complete: false
+   }
+}
+
 function createList(name){
   return {
    id: Date.now().toString(),
    name: name,
-   tasks:[{
-     id:'faf',
-     name: 'Test',
-     complete: false
-   }]
+   tasks:[]
   }
 
 }
