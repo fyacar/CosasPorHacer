@@ -11,7 +11,7 @@
     color: black;
 }
 .titulo-listas{
-    margin: 1em 0 0 0;
+    margin: 1em 0 .4em 0;
     color:black
 }
 body{
@@ -29,7 +29,7 @@ body{
 }
 main{
     display: grid;
-    grid-template-columns: 1fr minmax(150px,250px) minmax(200px,450px) 1fr; 
+    grid-template-columns: 1fr minmax(150px,300px) minmax(200px,450px) 1fr; 
     gap:1em;   
     grid-template-areas: ". l t .";
     background-color: rgba(255, 255, 255, .1);
@@ -43,9 +43,24 @@ main{
     font-size: 1.3rem;
     grid-area: l;
     list-style: circle;
-    color: black;    
+    color: black;
+    max-height: 70vh ;    
+    overflow: scroll;   
     
 }
+.lista::-webkit-scrollbar {    
+    -webkit-appearance: none;    
+}
+.lista::-webkit-scrollbar-thumb {
+    background-color: inherit;
+    border-radius: 4px;
+    border: 2px solid #f1f2f3;
+}
+.lista::-webkit-scrollbar-corner{
+    display: none;
+}
+
+
 .nombre-lista{
     cursor: pointer;
 }
@@ -64,19 +79,39 @@ margin: 0;
 .detalle-header{
 background: #885151a4;
 display: flex;
-justify-content: space-between;
-align-items: baseline;
+flex-direction: column;
 padding: var(--espaciador);
+padding-bottom: .5em;
 }
-.titulo-detalle-listas{
+.titulo-detalle-listas{    
     margin: 0;
+    margin-bottom: .2em;    
 }
 .contador{
     margin: 0;
+    align-self: end;
+    font-size: .7em;
 }
 .detalle-body{
 padding: var(--espaciador) var(--espaciador) 0 var(--espaciador);
+max-height: 25vh ;   
+overflow: scroll;  
+
 }
+
+.detalle-body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.detalle-body::-webkit-scrollbar-thumb {
+    background-color: var(--color-advertencia);
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+.detalle-body::-webkit-scrollbar-corner{
+    display: none;
+}
+
+
 .tarea-nueva::placeholder{
     color: var(--color-oscuro);
 }
@@ -254,3 +289,16 @@ form{
     color:black;
     background-color: var(--color-primario);
 }
+
+
+@media screen and (max-width: 750px) {
+    main{
+        grid-template-columns: 1fr minmax(200px,450px) 1fr; 
+        gap:1em;   
+        grid-template-areas: ". l  ."
+                            ". t .";
+    }
+    .lista{
+        max-height: 50vh ; 
+    }
+  }

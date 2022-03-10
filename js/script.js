@@ -26,6 +26,9 @@ const newTaskInput = document.querySelector('[data-new-task-input]');
 
 const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]');
 
+//
+const contenedorListas = document.querySelector('.lista'); 
+
 
 
 clearCompleteTasksButton.addEventListener('click', e=>{
@@ -116,7 +119,21 @@ function render() {
     clearElement(taskContainer);
     renderTasks(selectedList);
   }
+
+ /*  if( (contenedorListas.clientHeight * 100)/window.innerHeight >= 70){
+      contenedorListas.style.overflow="scroll";
+  }else{
+    contenedorListas.style.overflow="";
+  }
+
+  console.log(window.innerHeight);
+console.log(contenedorListas.clientHeight);
+console.log((contenedorListas.clientHeight * 100)/window.innerHeight);
+ */
 }
+
+
+
 function renderTasks(selectedList){
     selectedList.tasks.forEach(task =>{
       const taskElement = document.importNode(taksTemplate.content , true);
@@ -147,6 +164,7 @@ function renderLists(){
     // Si el id del elemento es igual al id al que se ha hecho click (listsContaine.addEventListener()) se le agrega la clase 'Lista Activa'
     if(list.id === selectedListId) listElement.classList.add('lista-activa');
     listsContainer.appendChild(listElement);
+    //   
   })
 }
 
