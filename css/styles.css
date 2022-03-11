@@ -1,5 +1,6 @@
 :root{
-    --color-primario:rgb(54,112,199);
+    /* --color-primario:rgb(54,112,199); */
+    --color-primario:black;
     --color-texto: black;
     --color-claro: white;
     --color-oscuro:#333;
@@ -9,32 +10,46 @@
 .titulo-principal{
     text-align: center;
     color: black;
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    margin:0;
 }
+
 .titulo-listas{
-    margin: 1em 0 .4em 0;
-    color:black
+    margin: 0;
+    color:black;    
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
-body{
+body{    
     margin: 0;
     font-weight: 300;
     font-size: 1.5rem;
     box-sizing: border-box;
-    background: url(https://source.unsplash.com/collection/1103088);
+    background: url(https://source.unsplash.com/collection/1377967);
     background-size: cover;
     background-color: var(--color-primario);
     color: var(--color-claro);
     display: flex;
     flex-direction: column; 
-    align-items: center;    
+    align-items: center;
+    justify-content: center;
+    max-height: 95vh;
+}
+.contenedor{
+    margin-top: 2em;    
+    background-color: rgba(255, 255, 255, 0.027);
+    width: fit-content;    
+    backdrop-filter: blur(4px);
 }
 main{
     display: grid;
     grid-template-columns: 1fr minmax(150px,300px) minmax(200px,450px) 1fr; 
     gap:1em;   
     grid-template-areas: ". l t .";
-    background-color: rgba(255, 255, 255, .1);
+  /*   background-color: rgba(255, 255, 255, 0.027);
     width: fit-content;    
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(4.8px); */
     padding-top: 1em;
     padding-bottom:1em ;
     
@@ -46,6 +61,8 @@ main{
     color: black;
     max-height: 70vh ;    
     overflow: scroll;   
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
     
 }
 .lista::-webkit-scrollbar {    
@@ -63,12 +80,16 @@ main{
 
 .nombre-lista{
     cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+font-family: 'Poppins', sans-serif;
 }
 .nombre-lista:hover{
     opacity: 0.7;
 }
 .detalle-listas{
-    --espaciador:2rem;
+font-family: 'Fredoka', sans-serif;
+font-family: 'Poppins', sans-serif;
+ --espaciador:2rem;
 grid-area: t;
 background-color: var(--color-claro);
 color: var(--color-oscuro);
@@ -77,25 +98,29 @@ margin: 0;
 
 }
 .detalle-header{
-background: #885151a4;
+    
+background: black;
+color: white;
 display: flex;
 flex-direction: column;
 padding: var(--espaciador);
 padding-bottom: .5em;
 }
-.titulo-detalle-listas{    
+.titulo-detalle-listas{       
     margin: 0;
+   
     margin-bottom: .2em;    
 }
 .contador{
     margin: 0;
     align-self: end;
-    font-size: .7em;
+    font-size: .6em;   
 }
 .detalle-body{
 padding: var(--espaciador) var(--espaciador) 0 var(--espaciador);
 max-height: 25vh ;   
-overflow: scroll;  
+overflow: scroll;
+  
 
 }
 
@@ -122,6 +147,7 @@ overflow: scroll;
 }
 
 .detalle-borrar-tareas{
+    
     margin: 0;
     padding-left: var(--espaciador);
     padding-right: var(--espaciador);
@@ -144,12 +170,16 @@ opacity: 0.7;
     border: 0;
     color: inherit;
     border-bottom: 1px solid currentColor;
-    font-size: 1.1rem;
-    outline: none;
-    
+    font-size: .9rem;
+    outline: none;    
     transition: border-bottom 200ms ease-in;
     order:1;
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
 
+}
+input{
+    width: 14em;
 }
 
 .lista-nueva:focus , .tarea-nueva:focus{
@@ -173,6 +203,8 @@ form{
     letter-spacing: .8px;
     opacity: .7;
     font-size: 8.rem;
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn-nueva-lista{
@@ -285,20 +317,28 @@ form{
     border-radius:5%;
 }
 
-.btn-borrar-lista:hover, .btn-borrar-tareas:hover{
-    color:black;
-    background-color: var(--color-primario);
+.btn-borrar-lista:hover, .btn-borrar-tareas:hover{    
+    background-color: black;
 }
 
 
 @media screen and (max-width: 750px) {
+    body{
+        background-size: auto;
+    }
     main{
         grid-template-columns: 1fr minmax(200px,450px) 1fr; 
-        gap:1em;   
+        gap:0em;
+        margin-top: -1.7em;
         grid-template-areas: ". l  ."
-                            ". t .";
+                            ". t .";                            
     }
     .lista{
-        max-height: 50vh ; 
+        max-height: 50vh ;
+        justify-self: center; 
+    }
+    .titulo-listas{
+        margin: 1em 0 0 0;
+      
     }
   }
