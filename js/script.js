@@ -7,9 +7,12 @@ const newListInput = document.querySelector('[data-new-list-input]');
 //local storege keys
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
 const LOCAL_STORAGE_LIST_ID_KEY = 'task.selectedListID';
+const LOCAL_STORAGE_URL_FONDO = 'task.urlFondo';
 //lists lee las listas desde el local storage y almacena esa información
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_LIST_ID_KEY);
+
+let urlFondo = localStorage.getItem(LOCAL_STORAGE_URL_FONDO);
 
 const deleteListButton = document.querySelector('[data-delete-list-button]');
 
@@ -29,12 +32,65 @@ const clearCompleteTasksButton = document.querySelector('[data-clear-complete-ta
 //
 const contenedorListas = document.querySelector('.lista'); 
 
+const btnUrlFondo = document.querySelector('[data-btn-mostar-input-cambiar-fondo]');
+const btnAgregarFondo = document.querySelector('[data-agregar-fondo]');
+const btnEliminarFondo = document.querySelector('[data-eliminar-fondo]');
 
+const aaa = document.getElementById('aaa');
+
+aaa.addEventListener('click' , e=>{
+  console.log("valor de urlFondo: "+ urlFondo);
+  console.log(localStorage.getItem(LOCAL_STORAGE_URL_FONDO));
+})
+
+btnAgregarFondo.addEventListener('click', e=>{  
+  e.preventDefault();
+  url = document.getElementById('url-fondo').value;
+  localStorage.setItem(LOCAL_STORAGE_URL_FONDO, url);  
+  location.reload(); 
+})
+
+btnEliminarFondo.addEventListener('click',e=>{
+  e.preventDefault();  
+  localStorage.setItem(LOCAL_STORAGE_URL_FONDO, 'https://source.unsplash.com/collection/252265');
+  location.reload();  
+})
+
+function saveAndRender(){
+  save();
+  render();
+}
+
+function save(){
+  //guardamos la información de las listas en localStorage, pasando primero el valor de la llave
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY , JSON.stringify(lists));
+  //se guarda el id de la lista que se seleccionó para que se quede con la clase 'lista-activa'
+  localStorage.setItem(LOCAL_STORAGE_LIST_ID_KEY , selectedListId);
+}
+
+function render() {
+  clearElement(listsContainer);
+  renderLists();
+  document.body.style.background = `url(${urlFondo})`;
+  document.body.style.backgroundSize = 'cover';
+  const selectedList = lists.find(list => list.id === selectedListId)
+  if(selectedList == null){
+    listDisplayContainer.style.display="none";
+  }else{
+    listDisplayContainer.style.display="";
+    listTitleElement.innerText= selectedList.name;
+    renderTaskCount(selectedList);
+    clearElement(taskContainer);
+    renderTasks(selectedList);
+  }  
+  
+}
 
 clearCompleteTasksButton.addEventListener('click', e=>{
   const selectedList = lists.find(list=> list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
   saveAndRender();
+
 })
 
 taskContainer.addEventListener('click', e=>{
@@ -93,46 +149,6 @@ function createList(name){
   }
 
 }
-
-function saveAndRender(){
-  save();
-  render();
-}
-
-function save(){
-  //guardamos la información de las listas en localStorage, pasando primero el valor de la llave
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY , JSON.stringify(lists));
-  //se guarda el id de la lista que se seleccionó para que se quede con la clase 'lista-activa'
-  localStorage.setItem(LOCAL_STORAGE_LIST_ID_KEY , selectedListId);
-}
-
-function render() {
-  clearElement(listsContainer);
-  renderLists();
-  const selectedList = lists.find(list => list.id === selectedListId)
-  if(selectedList == null){
-    listDisplayContainer.style.display="none";
-  }else{
-    listDisplayContainer.style.display="";
-    listTitleElement.innerText= selectedList.name;
-    renderTaskCount(selectedList);
-    clearElement(taskContainer);
-    renderTasks(selectedList);
-  }
-
- /*  if( (contenedorListas.clientHeight * 100)/window.innerHeight >= 70){
-      contenedorListas.style.overflow="scroll";
-  }else{
-    contenedorListas.style.overflow="";
-  }
-
-  console.log(window.innerHeight);
-console.log(contenedorListas.clientHeight);
-console.log((contenedorListas.clientHeight * 100)/window.innerHeight);
- */
-}
-
-
 
 function renderTasks(selectedList){
     selectedList.tasks.forEach(task =>{

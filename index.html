@@ -7,50 +7,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Poppins:wght@300;400;700&display=swap"
+    rel="stylesheet">
   <title>Lista de Cosas por hacer</title>
 </head>
 
 <body>
   <div class="contenedor">
-  <header>
-    <h1 class="titulo-principal">Cosas Por Hacer</h1>
-  </header>
-  <main>
-    <div class="lista">
-      <h2 class="titulo-listas">Mis Listas</h2>     
-      <form action="" data-new-list-form>       
-        <label for="nueva-lista"></label>
-        <input type="text" class="lista-nueva"
-        data-new-list-input placeholder="Nombre de la nueva Lista"
-          aria-label="Nombre de la nueva lista" name="" id="nueva-lista">
-        <button type="submit" class="btn btn-nueva-lista" aria-label="botón crear nueva lista">+</button>
-      </form>
-      <ul class="ul-lista" data-lists>     
-      </ul>
-    </div>
-    <div class="detalle-listas" data-list-display-container>
-      <div class="detalle-header">
-        <h2 class="titulo-detalle-listas" data-list-title></h2>
-        <p class="contador" data-list-count></p>
-      </div>
-      <div class="detalle-body" data-tasks></div>
-      <div class="detalle-crear-tareas">
-        <form action="" data-new-task-form>
-          <button type="submit" class="btn btn-nueva-tarea" aria-label="botón crear nueva tarea">+</button>
-          <label for="nueva-tarea"></label>
-          <input type="text" class="tarea-nueva" placeholder="Nombre de la nueva tarea"
-            aria-label="Nombre de la nueva lista" name="" id="nueva-tarea" data-new-task-input>
+    <header>
+      <h1 class="titulo-principal">Cosas Por Hacer</h1>
+    </header>
+    <main>
+      <div class="lista">
+        <h2 class="titulo-listas">Mis Listas</h2>
+        <form action="" data-new-list-form>
+          <label for="nueva-lista"></label>
+          <input type="text" class="lista-nueva" data-new-list-input placeholder="Nombre de la nueva Lista"
+            aria-label="Nombre de la nueva lista" name="" id="nueva-lista">
+          <button type="submit" class="btn btn-nueva-lista" aria-label="botón crear nueva lista">+</button>
         </form>
+        <ul class="ul-lista" data-lists>
+        </ul>
       </div>
-      <div class="detalle-borrar-tareas">
-        <button data-clear-complete-tasks-button class="btn btn-borrar-tareas" >Borrar tareas terminadas</button>
-        <button class="btn btn-borrar-lista" data-delete-list-button>Borrar Lista</button>
+      <div class="detalle-listas" data-list-display-container>
+        <div class="detalle-header">
+          <h2 class="titulo-detalle-listas" data-list-title></h2>
+          <p class="contador" data-list-count></p>
+        </div>
+        <div class="detalle-body" data-tasks></div>
+        <div class="detalle-crear-tareas">
+          <form action="" data-new-task-form>
+            <button type="submit" class="btn btn-nueva-tarea" aria-label="botón crear nueva tarea">+</button>
+            <label for="nueva-tarea"></label>
+            <input type="text" class="tarea-nueva" placeholder="Nombre de la nueva tarea"
+              aria-label="Nombre de la nueva lista" name="" id="nueva-tarea" data-new-task-input>
+          </form>
+        </div>
+        <div class="detalle-borrar-tareas">
+          <button data-clear-complete-tasks-button class="btn btn-borrar-tareas">Borrar tareas<br> terminadas</button>
+          <button class="btn btn-borrar-lista" data-delete-list-button>Borrar Lista</button>
+        </div>
       </div>
-    </div>    
-  </main>
-</div>
+    </main>
+  </div>
+
+  <button data-btn-mostar-input-cambiar-fondo>🖼️</button>
+  <div class="cambiar-fondo">
+    <div>
+      <label for="url-fondo">URL fondo: </label>
+      <input id="url-fondo" type="text">
+      <button data-agregar-fondo> + </button> 
+      <button data-eliminar-fondo> x </button>     
+    </div>
+  </div>
+  <button id="aaa">aaa</button>
 
   <template id="task-template">
     <div class="detalle-tarea">
@@ -58,7 +70,6 @@
       <label><span class="checkbox-personalizado"></span></label>
     </div>
   </template>
-
 </body>
 <script src="js/script.js"></script>
 
