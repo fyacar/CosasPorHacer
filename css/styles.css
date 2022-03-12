@@ -1,5 +1,4 @@
-:root{
-    /* --color-primario:rgb(54,112,199); */
+:root{    
     --color-primario:black;
     --color-texto: black;
     --color-claro: white;
@@ -17,7 +16,7 @@
     font-family: 'Poppins', sans-serif;
     margin:0;
     margin-bottom: .5em;
-    text-shadow: #5456585d -125px -22px,#eeeeee9c 125px 22px, #ffffffab 2px 2px;
+    text-shadow: #5456585d -125px -22px,#f0f0f0c2 125px 22px, #ffffffab 2px 2px;
 }
 
 .titulo-listas{
@@ -31,9 +30,8 @@ body{
     font-weight: 300;
     font-size: 1.5rem;
     box-sizing: border-box;
-    background: url(https://source.unsplash.com/collection/252265);   
+    /* background: url(https://source.unsplash.com/collection/252265);  */  
     background-size: cover;
-    background-color: var(--color-primario);
     color: var(--color-claro);
     display: flex;
     flex-direction: column; 
@@ -45,19 +43,15 @@ body{
     padding-top: .5em;    
     background-color: rgba(255, 255, 255, 0.027);
     width: fit-content;    
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
 }
 main{
     display: grid;
     grid-template-columns: 1fr minmax(150px,300px) minmax(200px,450px) 1fr; 
     gap:1em;   
     grid-template-areas: ". l t .";
-  /*   background-color: rgba(255, 255, 255, 0.027);
-    width: fit-content;    
-    backdrop-filter: blur(4.8px); */
     padding-top: 1em;
-    padding-bottom:1em ;
-    
+    padding-bottom:1.8em;
 }
 .lista{
     font-size: 1.3rem;
@@ -67,8 +61,7 @@ main{
     max-height: 70vh ;    
     overflow: scroll;   
     font-family: 'Fredoka', sans-serif;
-    font-family: 'Poppins', sans-serif;
-    
+    font-family: 'Poppins', sans-serif;    
 }
 .lista::-webkit-scrollbar {    
     -webkit-appearance: none;    
@@ -324,6 +317,62 @@ form{
 .btn-borrar-lista:hover, .btn-borrar-tareas:hover{    
     background-color: black;
 }
+.contenedor-cambiar-fondo{
+    position: fixed;
+    height: fit-content; 
+    top:0;
+    left: 5vw;
+    bottom: -88vh;      
+    display: flex;
+    align-items: center; 
+      
+}
+
+.btn-imagen-input{
+    background:none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 3rem;
+    cursor: pointer;
+    margin-left: -5vw;
+    opacity: .2;
+    transition: all .8s; 
+}
+.btn-imagen-input:hover{
+    opacity: 1;
+}
+
+.cambiar-fondo{   
+    /* display: none; */
+    background-color: rgba(255, 255, 255, 0.466); 
+    padding: 3px; 
+    color: black;
+    font-weight: 500;    
+    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    opacity: .4;
+}
+.cambiar-fondo:hover{
+opacity: 1;
+}
+
+.btn-agr-img-fondo , .btn-fondo-aleatorio{
+    border: solid 1px black;
+    font-size: 1rem;
+    padding: .3em .7em .3em .7em ;
+    border-radius: 5px;
+} 
+
+.btn-agr-img-fondo:hover , .btn-fondo-aleatorio:hover{
+    background-color: black;
+    color: white;
+}   
+
+#url-fondo{
+    height: 1.8em;
+}
+
 
 @media screen and (max-width: 750px) {
     body{
@@ -352,8 +401,54 @@ form{
     .detalle-header{
         padding: .5em;
     }
-  }
+    .contenedor{
+        margin-top: 0;
+        min-height: 90vh;
+        height: fit-content;        
+        width: 95%;        
+    }
+    .contenedor-cambiar-fondo{
+        position:static;   
+        display: flex;
+        flex-direction: column-reverse;       
+    }
+        .btn-imagen-input{ 
+            align-self: center;
+            margin: 0;              
+            font-size: 3rem;
+            cursor: pointer;        
+            opacity: .8;
+            transition: all .3s;
+            margin-bottom: .2em; 
+        }
+        .btn-imagen-input:hover{
+            opacity: 1; 
+          }
+        
+        .cambiar-fondo{  
+            display: none;
+            justify-content: center;        
+            width: 100vw;
+            opacity: 1;
+            margin-left: 0;    
+            margin-top: .8em;
+            padding:.5em; 
+            color: black;
+            font-weight: 600;
+            font-size: 1.2rem;        
+        }
+        .cambiar-fondo button {
+            font-size: 1rem;
+            padding: .3em .7em .3em .7em;
+            
+        }
+        #url-fondo{
+            width: 35vw;
+            height: 2em;
+            margin-left: .2em;
+        }
 
+  }  
 
 @media screen and (max-width: 550px) {
     body{
@@ -363,15 +458,12 @@ form{
     main{       
         gap:0em;
         margin-top: -1.7em;
+        padding-bottom: 0;
         grid-template-columns: 4px 1fr 1fr 4px; 
         grid-template-areas: ". l l ."
                             ". t t .";                            
     }
-    .contenedor{
-        margin-top: 0;
-        height: 100vh;
-        width: 95%;        
-    }
+
     .lista{
         max-height: 50vh ;
         justify-self: center;        
@@ -404,7 +496,54 @@ form{
         margin-bottom: 1em;
     }
     .btn{
-        font-weight: 400;
+        font-weight: 400;        
+    }
+    .contenedor{       
+        margin-top: 0;               
+        height: fit-content;        
+        width: 95%;        
+    }
+.contenedor-cambiar-fondo{
+    position: relative;   
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: -1.4em;
+    
+}
+    .btn-imagen-input{ 
+        align-self: center;
+        margin: 0;              
+        font-size: 3rem;
+        cursor: pointer;        
+        opacity: 1;
+        transition: all .8s;
+        margin-bottom: .2em; 
+    }
+    .btn-imagen-input:hover{
+        opacity: .8;  
+        
+      }
+    
+    .cambiar-fondo{  
+        display: none;
+        justify-content: center;        
+        width: 100vw;
+        margin-left: 0;    
+        margin-top: .8em;
+        padding:.5em; 
+        color: black;
+        font-weight: 600;
+        font-size: 1.2rem;        
+    }
+    .cambiar-fondo button {
+        font-size: 1rem;
+        padding: .3em .7em .3em .7em;
+        
+    }
+    #url-fondo{
+        width: 35vw;
+        height: 2em;
+        margin-left: .2em;
     }
   }
 

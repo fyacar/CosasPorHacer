@@ -36,11 +36,26 @@ const btnUrlFondo = document.querySelector('[data-btn-mostar-input-cambiar-fondo
 const btnAgregarFondo = document.querySelector('[data-agregar-fondo]');
 const btnEliminarFondo = document.querySelector('[data-eliminar-fondo]');
 
+const btnMostrarInputCambiarFondo = document.querySelector('[data-btn-mostar-input-cambiar-fondo]');
+const contenedorCambiarFondo = document.querySelector('.cambiar-fondo');
+let contador = 1;
+
+
 const aaa = document.getElementById('aaa');
 
-aaa.addEventListener('click' , e=>{
+/* aaa.addEventListener('click' , e=>{
   console.log("valor de urlFondo: "+ urlFondo);
   console.log(localStorage.getItem(LOCAL_STORAGE_URL_FONDO));
+}) */
+
+btnMostrarInputCambiarFondo.addEventListener('click' , e=>{  
+  if(contador%2!==0){   
+    contenedorCambiarFondo.style.display = 'flex';
+    contador ++;
+  } else{    
+    contenedorCambiarFondo.style.display = 'none';
+    contador ++;
+  }
 })
 
 btnAgregarFondo.addEventListener('click', e=>{  
@@ -52,7 +67,7 @@ btnAgregarFondo.addEventListener('click', e=>{
 
 btnEliminarFondo.addEventListener('click',e=>{
   e.preventDefault();  
-  localStorage.setItem(LOCAL_STORAGE_URL_FONDO, 'https://source.unsplash.com/collection/252265');
+  localStorage.setItem(LOCAL_STORAGE_URL_FONDO, 'https://source.unsplash.com/collection/4773283');
   location.reload();  
 })
 
@@ -83,7 +98,7 @@ function render() {
     clearElement(taskContainer);
     renderTasks(selectedList);
   }  
-  
+  let contador = 1;  
 }
 
 clearCompleteTasksButton.addEventListener('click', e=>{

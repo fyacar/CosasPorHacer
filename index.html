@@ -52,17 +52,19 @@
       </div>
     </main>
   </div>
-
-  <button data-btn-mostar-input-cambiar-fondo>🖼️</button>
-  <div class="cambiar-fondo">
-    <div>
-      <label for="url-fondo">URL fondo: </label>
-      <input id="url-fondo" type="text">
-      <button data-agregar-fondo> + </button> 
-      <button data-eliminar-fondo> x </button>     
+  <div class="contenedor-cambiar-fondo">
+    <button class="btn-imagen-input" data-btn-mostar-input-cambiar-fondo>🖼️</button>
+    <div class="cambiar-fondo">
+      <div>
+        <label for="url-fondo">URL:  </label>
+        <input id="url-fondo" type="text">
+        <button class="btn btn-agr-img-fondo" data-agregar-fondo> + </button>
+        <button class="btn btn-fondo-aleatorio" data-eliminar-fondo> Aleatorio </button>
+      </div>
     </div>
   </div>
-  <button id="aaa">aaa</button>
+
+  <!-- <button id="aaa">aaa</button> -->
 
   <template id="task-template">
     <div class="detalle-tarea">
