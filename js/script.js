@@ -67,7 +67,9 @@ btnAgregarFondo.addEventListener('click', e=>{
 
 btnEliminarFondo.addEventListener('click',e=>{
   e.preventDefault();  
-  localStorage.setItem(LOCAL_STORAGE_URL_FONDO, 'https://source.unsplash.com/collection/4773283');
+  localStorage.setItem(LOCAL_STORAGE_URL_FONDO, 'https://source.unsplash.com/collection/3416281');  
+  /* 3416281 */
+  /* localStorage.setItem(LOCAL_STORAGE_URL_FONDO, 'https://images.unsplash.com/photo-1521208916306-71fce562015a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80');   */
   location.reload();  
 })
 
