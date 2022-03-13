@@ -517,7 +517,7 @@ opacity: 1;
         cursor: pointer;        
         opacity: .8;
         transition: all .8s;
-        margin-bottom: .2em; 
+        margin-bottom: .2em;        
     }
     .btn-imagen-input:hover{
         opacity: .7;  
@@ -533,10 +533,12 @@ opacity: 1;
         padding:.5em; 
         color: black;
         font-weight: 600;
-        font-size: 1.2rem;        
+        font-size: 1rem; 
+        
+
     }
     .cambiar-fondo button {
-        font-size: 1rem;
+        font-size: .9rem;
         padding: .3em .7em .3em .7em;
         
     }
@@ -544,6 +546,7 @@ opacity: 1;
         width: 35vw;
         height: 2em;
         margin-left: .2em;
+        
     }
   }
 
